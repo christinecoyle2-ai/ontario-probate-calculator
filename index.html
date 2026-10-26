@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ontario Probate and Estate Cost Calculator</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-head">
+  <h1>Ontario Probate and Estate Cost Calculator</h1>
+  <p class="version-badge">Rules version <strong id="rules-version">loading…</strong> (2026 tax year, Ontario). Estimates only, not legal or tax advice.</p>
+</header>
+
+<main>
+<form id="intake" novalidate>
+
+<section aria-labelledby="h-estate">
+  <h2 id="h-estate">1. Estate basics</h2>
+  <fieldset>
+    <legend>Death and certificate</legend>
+    <div class="grid">
+      <p class="field"><label for="date-of-death">Date of death</label><input id="date-of-death" type="date" required></p>
+      <p class="field"><label for="application-date">Estate certificate application date (if known)</label><input id="application-date" type="date"></p>
+      <p class="field"><label for="certificate-issue-date">Certificate issue date (for the 180-day return deadline)</label><input id="certificate-issue-date" type="date"></p>
+    </div>
+    <fieldset>
+      <legend>Will an estate certificate be applied for?</legend>
+      <label><input type="radio" name="certificate" value="regular" checked> Yes, Certificate of Appointment of Estate Trustee</label>
+      <label><input type="radio" name="certificate" value="small_estate"> Yes, Small Estate Certificate (estate of $150,000 or less)</label>
+      <label><input type="radio" name="certificate" value="limited_to_will_assets"> Yes, certificate limited to assets in the probated will (multiple wills)</label>
+      <label><input type="radio" name="certificate" value="ancillary_resealing"> Yes, ancillary appointment or resealing (Ontario assets only)</label>
+      <label><input type="radio" name="certificate" value="succeeding_trustee_with_will"> Succeeding estate trustee certificate (no tax)</label>
+      <label><input type="radio" name="certificate" value="during_litigation"> Estate trustee during litigation (no tax)</label>
+      <label><input type="radio" name="certificate" value="none"> No certificate will be applied for</label>
+    </fieldset>
+    <div class="grid">
+      <fieldset>
+        <legend>Will status</legend>
+        <label><input type="radio" name="will-status" value="will" checked> Valid will</label>
+        <label><input type="radio" name="will-status" value="intestacy"> No will (intestacy)</label>
+        <label><input type="radio" name="will-status" value="unknown"> Unknown</label>
+      </fieldset>
+      <fieldset>
+        <legend>Spouse or common-law partner</legend>
+        <label><input type="checkbox" id="spouse-exists"> There is a spouse or common-law partner</label>
+        <p class="field conditional" data-when="spouse-exists"><label for="spouse-relationship">Relationship</label>
+          <select id="spouse-relationship"><option value="spouse">Married spouse</option><option value="common_law">Common-law partner</option><option value="separated">Separated (agreement or court order)</option></select></p>
+      </fieldset>
+    </div>
+    <div class="grid">
+      <p class="field"><label for="other-income">Other income of the deceased in year of death ($, optional)</label><input id="other-income" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="income-to-death">Interest, rent and similar accrued to date of death ($, optional)</label><input id="income-to-death" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="deductions">Other deductions on the final return ($, optional)</label><input id="deductions" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="capital-losses">Capital losses realized in year of death ($, optional)</label><input id="capital-losses" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="charity-gifts">Charitable gifts by will ($, optional)</label><input id="charity-gifts" type="number" min="0" step="0.01" value="0"></p>
+    </div>
+  </fieldset>
+</section>
+
+<section aria-labelledby="h-trusts">
+  <h2 id="h-trusts">2. Trusts (optional)</h2>
+  <div id="trusts-list"></div>
+  <button type="button" id="add-trust" class="secondary">Add a trust</button>
+</section>
+
+<section aria-labelledby="h-assets">
+  <h2 id="h-assets">3. Assets</h2>
+  <p>Enter raw values only. Everything else, including marginal rates and the probate base, is calculated for you.</p>
+  <div id="asset-list"></div>
+  <div class="preset-row">
+    <label for="preset-select">Load a scenario preset</label>
+    <select id="preset-select"><option value="">Choose a preset…</option></select>
+    <button type="button" id="load-sample" class="secondary">Load sample numbers</button>
+    <button type="button" id="add-asset" class="secondary">Add an asset</button>
+  </div>
+</section>
+
+<section aria-labelledby="h-fees">
+  <h2 id="h-fees">4. Professional fees and costs (never a government figure)</h2>
+  <fieldset>
+    <legend>Enter amounts, or use the labelled estimate</legend>
+    <label><input type="checkbox" id="use-fee-estimate"> Use estimate defaults based on this estate (executor about 2.5% of receipts and disbursements, court convention; legal fee range by estate size). Shown as estimates, editable.</label>
+    <div class="grid">
+      <p class="field"><label for="fee-legal">Legal fees ($)</label><input id="fee-legal" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="fee-executor">Executor compensation ($)</label><input id="fee-executor" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="fee-disbursements">Disbursements ($)</label><input id="fee-disbursements" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="fee-funeral">Funeral costs ($, estate cost only, never reduces the tax)</label><input id="fee-funeral" type="number" min="0" step="0.01" value="0"></p>
+      <p class="field"><label for="taxes-owing">Income taxes owing at death ($, estate cost line)</label><input id="taxes-owing" type="number" min="0" step="0.01" value="0"></p>
+    </div>
+  </fieldset>
+</section>
+
+</form>
+
+<section aria-labelledby="h-results" id="results-section">
+  <h2 id="h-results">5. Results</h2>
+  <div id="hard-stop" class="hard-stop" hidden></div>
+  <div id="results" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="h-sources">
+  <h2 id="h-sources">Sources and verification</h2>
+  <div id="sources-list"></div>
+  <p class="disclaimer">This tool produces estimates for planning only. It is not legal or tax advice and not a binding probate estimate. Fee estimates are conventions, not statutory amounts. Where a treatment is fact-specific, a flag is shown and the number is not changed without your explicit selection. No data leaves your browser.</p>
+</section>
+</main>
+
+<script type="module" src="ui.js"></script>
+</body>
+</html>

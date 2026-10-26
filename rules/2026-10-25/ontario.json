@@ -1,0 +1,148 @@
+{
+  "version": "2026-10-25",
+  "jurisdiction": "ON",
+  "taxYear": 2026,
+  "eat": {
+    "exemptionDollars": 50000,
+    "ratePerThousandDollars": 15,
+    "roundUpToDollars": 1000,
+    "currentRulesApplyFrom": "2020-01-01",
+    "exemptCertificateTypes": [
+      "succeeding_trustee_with_will",
+      "succeeding_trustee_with_will_limited",
+      "succeeding_trustee_without_will",
+      "during_litigation"
+    ],
+    "sourceIds": ["S1", "S2", "S3", "S4", "S5", "S6"]
+  },
+  "smallEstate": {
+    "thresholdDollars": 150000,
+    "effective": "2021-04-01",
+    "courtFeeDollars": null,
+    "courtFeeStatus": "unconfirmed",
+    "sourceIds": ["S19"]
+  },
+  "capitalGains": {
+    "inclusionRate": 0.5,
+    "sourceIds": ["S9"]
+  },
+  "cppDeathBenefit": {
+    "basicDollars": 2500,
+    "topUpDollars": 2500,
+    "maxDollars": 5000,
+    "effective": "2025-01-01",
+    "excludedFromEatBase": true,
+    "taxable": true,
+    "sourceIds": ["S20"]
+  },
+  "tfsa": {
+    "postDeathEarningsExemptDesignationFrom": "2026-01-01",
+    "sourceIds": ["S12", "S13"]
+  },
+  "federalTax": {
+    "brackets": [
+      { "from": 0, "to": 58523, "rate": 0.14 },
+      { "from": 58523, "to": 117045, "rate": 0.205 },
+      { "from": 117045, "to": 181440, "rate": 0.26 },
+      { "from": 181440, "to": 258482, "rate": 0.29 },
+      { "from": 258482, "to": null, "rate": 0.33 }
+    ],
+    "bpaMaxDollars": 16452,
+    "bpaMinDollars": 14829,
+    "bpaPhaseOutFrom": 181440,
+    "bpaPhaseOutTo": 258482,
+    "donationCredit": {
+      "firstDollars": 200,
+      "rateBelow": 0.14,
+      "rateAbove": 0.29,
+      "status": "unverified_pending_ship_gate"
+    },
+    "sourceIds": ["S14", "S18"]
+  },
+  "ontarioTax": {
+    "brackets": [
+      { "from": 0, "to": 53891, "rate": 0.0505 },
+      { "from": 53891, "to": 107785, "rate": 0.0915 },
+      { "from": 107785, "to": 150000, "rate": 0.1116 },
+      { "from": 150000, "to": 220000, "rate": 0.1216 },
+      { "from": 220000, "to": null, "rate": 0.1316 }
+    ],
+    "bpaDollars": 12989,
+    "surtax": {
+      "tier1ThresholdDollars": 5818,
+      "tier1Rate": 0.20,
+      "tier2ThresholdDollars": 7446,
+      "tier2Rate": 0.36
+    },
+    "healthPremium": {
+      "tiers": [
+        { "from": 0, "to": 20000, "cap": 0, "base": 0, "rate": 0, "overBase": 0 },
+        { "from": 20000, "to": 36000, "cap": 300, "base": 0, "rate": 0.06, "overBase": 20000 },
+        { "from": 36000, "to": 48000, "cap": 450, "base": 300, "rate": 0.06, "overBase": 36000 },
+        { "from": 48000, "to": 72000, "cap": 600, "base": 450, "rate": 0.25, "overBase": 48000 },
+        { "from": 72000, "to": 200000, "cap": 750, "base": 600, "rate": 0.25, "overBase": 72000 },
+        { "from": 200000, "to": null, "cap": 900, "base": 750, "rate": 0.25, "overBase": 200000 }
+      ]
+    },
+    "donationCredit": {
+      "firstDollars": 200,
+      "rateBelow": 0.0505,
+      "rateAbove": 0.1116,
+      "status": "unverified_pending_ship_gate"
+    },
+    "lowIncomeTaxReduction": {
+      "modeled": false,
+      "note": "Not modeled for v1; death-year returns with deemed dispositions exceed the reduction income threshold in effectively all modeled cases. Source data captured in Ontario MOF 2026 dataset for later.",
+      "status": "out_of_scope_v1"
+    },
+    "sourceIds": ["S15", "S16", "S17", "S18"]
+  },
+  "principalResidence": {
+    "formula": "Per ITA 40(2)(b), remaining gain after exemption = A - (A * B / C) - D, so exempt portion = A * B / C; B = 1 + designated years (capped at C; post-1981 one designation per family unit per s. 54); C = years owned since acquisition date; D applies only to pre-1994 s. 110.6(19) elections",
+    "sourceIds": ["S21"]
+  },
+  "trusts": {
+    "greWindowMonths": 36,
+    "deemedDispositionYears": 21,
+    "sourceIds": ["S22", "S23"]
+  },
+  "filing": {
+    "estateInformationReturnDays": 180,
+    "sourceIds": ["S7"]
+  },
+  "courtFees": {
+    "regularApplicationDollars": 232,
+    "succeedingOrDuringLitigationDollars": 138,
+    "smallEstateApplicationDollars": null,
+    "smallEstateFeeStatus": "unconfirmed: the general $232 application fee likely applies to Form 74.1A but the schedule does not name small estates; hidden in the UI",
+    "sourceIds": ["S26"]
+  },
+  "sources": [
+    { "id": "S1", "rule": "EAT is $15 per $1,000 or part thereof on estate value exceeding $50,000, applications on/after 2020-01-01", "citation": "Estate Administration Tax Act, 1998, S.O. 1998, c. 34, Sched., s. 2(6.1)", "url": "https://www.ontario.ca/laws/statute/98e34", "section": "s. 2(6.1)", "effective": "2020-01-01", "asOf": "2026-06-15", "checked": "2026-10-25", "method": "Wayback snapshot of cited e-Laws page; live e-Laws API returned 502 on check date; re-verify live at ship gate", "status": "confirmed_snapshot" },
+    { "id": "S2", "rule": "Estate valued at $50,000 or less is exempt", "citation": "Same Act, s. 2(2)(b)", "url": "https://www.ontario.ca/laws/statute/98e34", "section": "s. 2(2)(b)", "effective": "2020-01-01", "asOf": "2026-06-15", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S3", "rule": "Value of the estate = Estates Act s. 32 value less actual value of encumbrances on real property", "citation": "Same Act, s. 1(1), as amended by 2024, c. 12, Sched. 2, s. 1 (in force 2024-05-16)", "url": "https://www.ontario.ca/laws/statute/98e34", "section": "s. 1(1)", "effective": "2024-05-16", "asOf": "2026-06-15", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S4", "rule": "Estate value rounded up to nearest $1,000; worked example $239,250 -> $240,000 -> $2,850", "citation": "Ontario, Estate Administration Tax", "url": "https://www.ontario.ca/page/estate-administration-tax", "section": "Calculating the tax", "effective": "2020-01-01", "asOf": "2026-06-24", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S5", "rule": "Assets included/excluded from estate value; non-deductible debts; reserve property exemption; first-deals exemption irrelevant to EAT", "citation": "Ontario, Estate Administration Tax", "url": "https://www.ontario.ca/page/estate-administration-tax", "section": "Determining the value of an estate", "effective": "current", "asOf": "2026-06-24", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S6", "rule": "No EAT if no certificate applied for or issued; no EAT for succeeding trustee and during-litigation certificates; deposit refunded if not issued", "citation": "Ontario, Estate Administration Tax", "url": "https://www.ontario.ca/page/estate-administration-tax", "section": "About the Estate Administration Tax; Applying for a Certificate", "effective": "current", "asOf": "2026-06-24", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S7", "rule": "Estate Information Return due within 180 calendar days of certificate issuance; extended to next business day", "citation": "Ontario, Estate Administration Tax", "url": "https://www.ontario.ca/page/estate-administration-tax", "section": "Filing an Estate Information Return", "effective": "current", "asOf": "2026-06-24", "checked": "2026-10-25", "method": "Fetched live; guide PDF downloaded but text extraction failed, non-blocking", "status": "confirmed" },
+    { "id": "S8", "rule": "Deemed disposition of capital property at FMV immediately before death; acquirer cost = FMV", "citation": "Income Tax Act, R.S.C. 1985, c. 1 (5th Supp.), s. 70(5)", "url": "https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-70.html", "section": "s. 70(5)(a),(b)", "effective": "current to 2026-09-30", "asOf": "2026-09-30", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S9", "rule": "Capital gains inclusion rate 1/2 for 2026; proposed two-thirds increase cancelled 2025-03-21; LCGE $1,250,000 maintained", "citation": "Prime Minister of Canada news release", "url": "https://www.pm.gc.ca/en/news/news-releases/2025-03-21/prime-minister-mark-carney-cancels-proposed-capital-gains-tax-increase", "section": "Release text", "effective": "2025-03-21", "asOf": "2025-03-21", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S10", "rule": "RRSP: FMV at death deemed received by annuitant, reported on final return; exception where spouse/common-law partner is sole beneficiary (rollover); post-death income periods to Dec 31 of following year", "citation": "CRA RC4177, Death of an RRSP Annuitant", "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4177/death-rrsp-annuitant-a-prpp-member.html", "section": "General rule for RRSP - deceased annuitant; Exception", "effective": "current", "asOf": "2026-05-13", "checked": "2026-10-25", "method": "Wayback snapshot; canada.ca refused direct fetch", "status": "confirmed_snapshot" },
+    { "id": "S11", "rule": "RRIF: designated benefit to surviving spouse/common-law partner with direct transfer conditions; payments to date of death on final return", "citation": "CRA, RRIF income on death", "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/prepare-returns/report-income/rrif.html", "section": "RRIF income", "effective": "current", "asOf": "2026-02-09", "checked": "2026-10-25", "method": "Wayback snapshot; ITA s. 146.3 successor-annuitant wording to fetch at ship gate", "status": "confirmed_snapshot" },
+    { "id": "S12", "rule": "TFSA successor holder becomes holder at death; date-of-death value and post-death earnings sheltered", "citation": "CRA, If you are a successor holder of a TFSA", "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/death-of-holder/successor-holder.html", "section": "Full page", "effective": "current", "asOf": "2026-04-15", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S13", "rule": "TFSA designated beneficiary: exempt contribution rules; from 2026-01-01 post-death earnings to end of rollover period can be designated exempt", "citation": "CRA, If you are a designated beneficiary of a TFSA", "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/tax-free-savings-account/death-of-holder/beneficiary.html", "section": "Change to how TFSA earnings accrued after death are treated", "effective": "2026-01-01", "asOf": "2026-05-18", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S14", "rule": "Federal 2026 brackets: 14% to $58,523; 20.5% to $117,045; 26% to $181,440; 29% to $258,482; 33% above", "citation": "CRA, Current year tax rates and income brackets (2026)", "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html", "section": "Federal rate for 2026", "effective": "2026-01-01", "asOf": "2026-10-19", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S15", "rule": "Ontario 2026 brackets: 5.05% to $53,891; 9.15% to $107,785; 11.16% to $150,000; 12.16% to $220,000; 13.16% above", "citation": "CRA current-year page; cross-checked Ontario MOF dataset Personal income tax rates and credits 2026 (published 2025-12-12)", "url": "https://data.ontario.ca/en/dataset/personal-income-tax-rates-and-credits", "section": "Tranches/Taux pour 2026", "effective": "2026-01-01", "asOf": "2026-10-19", "checked": "2026-10-25", "method": "Wayback snapshot + live XLSX fetch; two sources agree", "status": "confirmed" },
+    { "id": "S16", "rule": "Ontario surtax 2026: 0 up to $5,818 basic ON tax; 20% of excess over $5,818; plus 36% of excess over $7,446", "citation": "CRA T4032ON General Information; Ontario MOF 2026 dataset", "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032on-jan/t4032on-january-general-information.html", "section": "Surtax", "effective": "2026-01-01", "asOf": "2026-09-04", "checked": "2026-10-25", "method": "Wayback snapshot + live XLSX; two sources agree", "status": "confirmed" },
+    { "id": "S17", "rule": "Ontario health premium 2026 tiers: caps $0/$300/$450/$600/$750/$900 at thresholds $20k/$36k/$48k/$72k/$200k", "citation": "CRA T4032ON General Information", "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4032-payroll-deductions-tables/t4032on-jan/t4032on-january-general-information.html", "section": "Ontario health premium For 2026", "effective": "2026-01-01", "asOf": "2026-09-04", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S18", "rule": "Federal BPA 2026: max $16,452 (income at/below $181,440), min $14,829 (at/above $258,482), linear phase-out between; 2026 indexing 2.0%; Ontario BPA 2026 $12,989", "citation": "CRA Adjustments for tax amounts; Ontario MOF 2026 dataset", "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/frequently-asked-questions-individuals/adjustment-personal-income-tax-benefit-amounts.html", "section": "Amounts relating to non-refundable tax credits", "effective": "2026-01-01", "asOf": "2026-08-23", "checked": "2026-10-25", "method": "Wayback snapshot + live XLSX", "status": "confirmed_snapshot" },
+    { "id": "S19", "rule": "Small estate = $150,000 or less since 2021-04-01; EAT payable between $50,000 and $150,000; certificate fee not stated on page", "citation": "ontario.ca Probate of a small estate; Estates Act s. 1; O. Reg. 110/21 s. 1", "url": "https://www.ontario.ca/page/probate-small-estate", "section": "Apply for probate of a small estate", "effective": "2021-04-01", "asOf": "2026-10-16", "checked": "2026-10-25", "method": "Page fetched live; reg text via e-Laws page snippet (currency 2026-10-16)", "status": "confirmed_fee_unconfirmed" },
+    { "id": "S20", "rule": "CPP death benefit: basic $2,500 plus top-up $2,500, max $5,000, effective 2025-01-01; excluded from EAT base; taxable", "citation": "canada.ca CPP Death benefit; EAT page exclusion list", "url": "https://www.canada.ca/en/services/benefits/publicpensions/cpp/cpp-death-benefit.html", "section": "How much could you receive", "effective": "2025-01-01", "asOf": "2026-10-17", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_snapshot" },
+    { "id": "S21", "rule": "PRE formula exempt = A - (A x B/C) - D with plus-one rule in B; principal residence definition", "citation": "ITA s. 40(2)(b); s. 54 definition", "url": "https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-40.html", "section": "s. 40(2)(b); s. 54", "effective": "current to 2026-09-30", "asOf": "2026-09-30", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S22", "rule": "Graduated rate estate: within 36 months of death, testamentary trust, SIN provided, self-designated, sole GRE", "citation": "ITA s. 248(1) definition", "url": "https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-248.html", "section": "s. 248(1) graduated rate estate", "effective": "current to 2026-09-30", "asOf": "2026-09-30", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S23", "rule": "Trust deemed disposition every 21 years", "citation": "ITA s. 104(4)", "url": "https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-104.html", "section": "s. 104(4)", "effective": "current to 2026-09-30", "asOf": "2026-09-30", "checked": "2026-10-25", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S24", "rule": "RESP subscriber death: estate or surviving/former spouse can acquire subscriber rights; AIP taxation detail not verified", "citation": "CRA RC4092", "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4092/registered-education-savings-plans-resps.html", "section": "Who can be a subscriber", "effective": "current", "asOf": "2026-09-10", "checked": "2026-10-25", "method": "Wayback snapshot", "status": "confirmed_flag_only" },
+    { "id": "S25", "rule": "RRIF survivor mechanics: after the annuitant's death a spouse or common-law partner becomes the annuitant (survivor) by election of the first individual or with consent of the legal representative; statutory basis of the successor-annuitant treatment", "citation": "Income Tax Act s. 146.3(1), definition annuitant, paragraph (b)", "url": "https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-146.3.html", "section": "s. 146.3(1) annuitant (b)", "effective": "current to 2026-09-30", "asOf": "2026-09-30", "checked": "2026-10-26", "method": "Fetched live", "status": "confirmed" },
+    { "id": "S26", "rule": "Superior Court estate application fees: application other than to pass accounts (includes certificate of appointment applications) $232; succeeding estate trustee or estate trustee during litigation $138; schedule does not name a small estate certificate fee", "citation": "Ontario, Civil court fees, Court fees in estate matters", "url": "https://www.ontario.ca/page/civil-court-fees", "section": "Court fees in estate matters table items 1 and 4", "effective": "page updated 2026-04-09", "asOf": "2026-04-09", "checked": "2026-10-26", "method": "Fetched live", "status": "confirmed_fee_gap_small_estate" }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "authoritative_register": "rules/2026-10-25/ontario.json",
+  "note": "Every displayed figure traces to a source id (S1-S24) in the register above. This file exists only as a pointer; do not duplicate source rows here.",
+  "fallback_bundle": "rules-bundle.js (regenerate with npm run bundle after editing the register)"
+}

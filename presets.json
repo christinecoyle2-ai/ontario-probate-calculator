@@ -1,0 +1,92 @@
+{
+  "presets": [
+    {
+      "id": "home_and_joint_bank",
+      "label": "Surviving spouse: Ontario home, joint bank, RRSP to spouse",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": true, "relationship": "spouse" },
+        "certificate_requested": true,
+        "certificate_type": "regular"
+      },
+      "assets": [
+        { "category": "on_real_property", "ownership": "joint_jtwros", "coowner_relationship": "spouse", "situs": { "province": "ON" }, "principal_residence": { "designated": true } },
+        { "category": "bank", "ownership": "joint_jtwros", "coowner_relationship": "spouse" },
+        { "category": "rrsp", "ownership": "sole", "beneficiary": { "present": true, "type": "spouse_common_law", "sole": true } }
+      ]
+    },
+    {
+      "id": "sole_everything",
+      "label": "Single, no designations: home with mortgage, investments, TFSA",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": false },
+        "certificate_requested": true,
+        "certificate_type": "regular"
+      },
+      "assets": [
+        { "category": "on_real_property", "ownership": "sole", "situs": { "province": "ON" }, "encumbranceRegisteredOnIncludedOnRealProperty": true },
+        { "category": "investment", "ownership": "sole" },
+        { "category": "tfsa", "ownership": "sole", "beneficiary": { "present": false } }
+      ]
+    },
+    {
+      "id": "business_owner_multiple_wills",
+      "label": "Business owner: multiple wills, private shares outside probated will",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": true, "relationship": "spouse" },
+        "certificate_requested": true,
+        "certificate_type": "limited_to_will_assets",
+        "multiple_wills": { "strategy_used": true }
+      },
+      "assets": [
+        { "category": "bank", "ownership": "sole", "in_probated_will": true },
+        { "category": "on_real_property", "ownership": "sole", "situs": { "province": "ON" }, "in_probated_will": true },
+        { "category": "private_shares", "ownership": "sole", "in_probated_will": false }
+      ]
+    },
+    {
+      "id": "cottage_family",
+      "label": "Cottage and city home, partial principal residence designation",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": false },
+        "certificate_requested": true,
+        "certificate_type": "regular"
+      },
+      "assets": [
+        { "category": "on_real_property", "ownership": "sole", "situs": { "province": "ON" }, "principal_residence": { "designated": true } },
+        { "category": "on_real_property", "ownership": "sole", "situs": { "province": "ON" }, "principal_residence": { "designated": false } }
+      ]
+    },
+    {
+      "id": "small_estate",
+      "label": "Small estate: modest bank accounts and vehicle",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": false },
+        "certificate_requested": true,
+        "certificate_type": "small_estate"
+      },
+      "assets": [
+        { "category": "bank", "ownership": "sole" },
+        { "category": "vehicle_vessel", "ownership": "sole" }
+      ]
+    },
+    {
+      "id": "alter_ego_trust",
+      "label": "Alter ego trust holds the investments, house in estate",
+      "estate": {
+        "will_status": "will",
+        "spouse_or_clp": { "exists": false },
+        "certificate_requested": true,
+        "certificate_type": "regular"
+      },
+      "assets": [
+        { "category": "on_real_property", "ownership": "sole", "situs": { "province": "ON" } },
+        { "category": "investment", "ownership": "trust_held" }
+      ]
+    }
+  ]
+}
