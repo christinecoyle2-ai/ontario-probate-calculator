@@ -1,6 +1,6 @@
 # Review notes: Ontario Probate and Estate Cost Calculator
 
-Date: 2026-10-25. Rules version: 2026-10-25. Status: Phases 1-5 built, verification in progress, not yet review-ready for release (ship gate items open, no deployed review URL yet; local server only).
+Date: 2026-10-25, deploy record 2026-10-26. Rules version: 2026-10-25. Status: Phases 1-5 built and verified; review build deployed behind Netlify team login. Release still gated on the open ship-gate items below.
 
 ## Source verification status
 
@@ -47,9 +47,16 @@ All 24 sources in the register were actually fetched and read on 2026-10-25. Met
 3. Small estate certificate court fee: the schedule (S26, page updated 2026-04-09) names no small-estate-specific fee, so the UI shows the general $232 application fee with an explicit confirm-with-court note. A small-estate-specific amount, if any, remains unconfirmed.
 4. Resolved 2026-10-26: ITA s. 146.3(1) successor-annuitant mechanics confirmed live (S25); Superior Court estate application fees confirmed live (S26) and added to the fee card and totals as a statutory line ($232 regular, $138 succeeding or during litigation).
 5. Browser QA done headlessly (320/768px, sample estate end to end). A human pass on a real device is still recommended before launch.
-6. No git repository and no deployed review URL yet. Per project standards a Netlify preview review is required before calling the tool ready; creating the repository and deploy needs explicit approval.
+6. Resolved 2026-10-26: repository is github.com/christinecoyle2-ai/ontario-probate-calculator (public, commit e36da14) and a Netlify draft deploy was built from that commit. The URL is behind Netlify team protection, so only a signed-in team member can open it; giving the firm access needs the protection removed or a site password set, which requires the principal's approval.
 7. Estate Information Return guide PDF text extraction failed; non-blocking, but retry at the ship gate.
 
 ## How to run
 
 See README.md. Local server: python3 -m http.server 4173 in this folder, open http://localhost:4173/. Tests: ~/.nvm/versions/node/v24.21.0/bin/node --test tests/*.test.js.
+
+## Deploy record
+
+- 2026-10-26: Netlify project `ontario-probate-calculator-review`, draft deploy of commit e36da14.
+- Draft URL: https://6adefe94413502e45cd971ab--ontario-probate-calculator-review.netlify.app/
+- Access: Netlify team protection returns 401 to anyone not signed in.
+- Checks on the deployed artifact (served locally from `git archive` of the same commit): 63 of 63 node tests pass; sample estate shows EAT $8,250, taxable income $136,800, tax $35,895, EIR deadline 2027-05-31; no page overflow at 320px; only console error is a missing favicon.ico.
