@@ -35,7 +35,7 @@ Phases 1-5 built and locally verified. Review build deployed to Netlify on 2026-
 
 - Local run: python3 -m http.server 4173 in this folder, open http://localhost:4173/
 - Sample estate: http://localhost:4173/index.html?sample=1
-- Review build: https://6adefe94413502e45cd971ab--ontario-probate-calculator-review.netlify.app/ (Netlify login required)
+- Review build: https://6adf000e69826051619c7113--ontario-probate-calculator-review.netlify.app/ (Netlify login required)
 - Repository: https://github.com/christinecoyle2-ai/ontario-probate-calculator
 - Review notes: REVIEW_NOTES.md
 - Sources: sources.json pointing at rules/2026-10-25/ontario.json

@@ -56,7 +56,9 @@ See README.md. Local server: python3 -m http.server 4173 in this folder, open ht
 
 ## Deploy record
 
-- 2026-10-26: Netlify project `ontario-probate-calculator-review`, draft deploy of commit e36da14.
-- Draft URL: https://6adefe94413502e45cd971ab--ontario-probate-calculator-review.netlify.app/
+- 2026-10-26: Netlify project `ontario-probate-calculator-review`, draft deploy of the site files from commit e36da14.
+- Draft URL: https://6adf000e69826051619c7113--ontario-probate-calculator-review.netlify.app/
+- Deployed files (site only): index.html, styles.css, ui.js, app.js, rules-bundle.js, presets-bundle.js, presets.json, rules/2026-10-25/ontario.json. Internal notes, tests and scripts are not published.
 - Access: Netlify team protection returns 401 to anyone not signed in.
-- Checks on the deployed artifact (served locally from `git archive` of the same commit): 63 of 63 node tests pass; sample estate shows EAT $8,250, taxable income $136,800, tax $35,895, EIR deadline 2027-05-31; no page overflow at 320px; only console error is a missing favicon.ico.
+- Checks on the deployed artifact (served locally from the same directory): 63 of 63 node tests pass; sample estate shows EAT $8,250, taxable income $136,800, tax $35,895, court filing fee $232, EIR deadline 2027-05-31; no page overflow at 320px; only console error is a missing favicon.ico.
+- Duplicate copy at `/Users/christine/probate-calculator` is older: its ui.js and rules JSON lack the court fee card and the S25/S26 entries. This folder is authoritative.
